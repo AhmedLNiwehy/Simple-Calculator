@@ -112,3 +112,28 @@ void convert_To_String(sint8 str[], f32 num)
 	
 	str[len + len_f + 1] = '\0';
 }
+f32 convert_To_Int(sint8 str[])
+{
+	sint32 sign=1, i=-1;
+	
+	f32 num = 0.0,Div = 1;
+
+	if(str[0] == '-')    //check if the string is -ve
+	{
+		sign = -1;
+		i = 0;           //skip the -ve sign to the number
+	}
+
+	while(str[++i] != '.')
+	{
+		num = (num * 10) + (str[i] - '0');
+	}
+    while(str[++i] != 0)
+    {
+        Div = Div / 10;
+        num = num  + (Div * (str[i] - '0'));
+    }
+	num *= sign;
+	
+	return num;
+}
