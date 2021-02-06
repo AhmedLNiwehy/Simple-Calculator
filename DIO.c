@@ -61,20 +61,21 @@ STD_Level DIO_ReadChannel(DIO_ChannelTypes Ch)
 {
 	DIO_PortTypes portx = Ch / 8;
 	uint8 pin = Ch % 8;
-	
+	uint8 Ret = 0;
 	switch(portx)
 	{
 		case DIO_PORTA:
-		return GET_BIT(PINA_REG,pin);
+			Ret = GET_BIT(PINA_REG,pin);
 		break;
 		case DIO_PORTB:
-		return GET_BIT(PINB_REG,pin);
+			Ret = GET_BIT(PINB_REG,pin);
 		break;
 		case DIO_PORTC:
-		return GET_BIT(PINC_REG,pin);
+			Ret =  GET_BIT(PINC_REG,pin);
 		break;
 		case DIO_PORTD:
-		return GET_BIT(PIND_REG,pin);
+			Ret =  GET_BIT(PIND_REG,pin);
 		break;
 	}
+	return Ret;
 }
